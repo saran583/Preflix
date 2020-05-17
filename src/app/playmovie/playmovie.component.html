@@ -1,21 +1,18 @@
-<div>
-    <iframe [src]="urlSafe" width="1300" height="650" allowfullscreen></iframe>;
+<h2 align="center" style="color: bisque;">{{board()}}</h2>
+<div >
+    <iframe [src]="urlSafe" width="1300" height="650"  allowfullscreen></iframe>;
 
 </div>
 <div>
-    <table>
-        <tr>
-            <td>
                 <h2 style="color: bisque;">{{board()}}</h2>
-            </td>
-            <td>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button
-                    style="width: 100px; height: 40px; margin-top: 10px; background-color: rgb(187, 14, 115); border: none; font-size: 15px; border-radius: 10px;"
-                    *ngIf="!validate">Watch Movie</button>
-            </td>
-        </tr>
-    </table>
+                <br>
+                <h2 style="color: bisque; font-family: Arial">Runtime: {{Runtime()}}</h2>
+                <br>
+                <h2 style="color: bisque; font-family: Arial">Actors: {{Actors()}}</h2>
+                <br>
+                <h2 style="color: bisque;  font-family: Arial">Plot: {{Plot()}}</h2>
 </div>
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
-    <p style="color: white"> Loading video... </p>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-clip-rotate-pulse" [fullScreen]="true">
+    <p style="color: white"> Connecting to Preflex Server... </p>
 </ngx-spinner>

@@ -1,19 +1,33 @@
-<br>
-    <p align="center" style="color: bisque;">{{result}}</p>
-    <div align="center">
-    <div class="card">
-    <br>
-    <br>
-    <label >Movie Name</label>
-    &nbsp;&nbsp;<input type="text" placeholder="Name of the Movie" [(ngModel)] = "movie">
-    <br>
-    <br>
-    <label >Released in</label>
-    &nbsp;&nbsp;<input type="text" placeholder="Year " [(ngModel)] = "year">
-    <br>
-    <br>
-    <button *ngIf="validate()" style="width: 180px; height: 50px; margin-top: 10px; background-color: #E8EE37; border: none; font-size: 15px;   font-family: 'Lucida Calligraphy'; border-radius: 25px;" (click)="sendtodb()" >Submit Request</button>
-    <br>
-    <br>
+<div class="row">
+    <div class="column right" style="background-color:#aaa;">
+        <br>
+        <p align="center" style="color: bisque;">{{result}}</p>
+        <div align="center">
+            <div class="card">
+                <br>
+                <br>
+                <label>Movie Name</label>
+                &nbsp;&nbsp;<input type="text" placeholder="Name of the Movie" [(ngModel)]="movie">
+                <br>
+                <br>
+                <label>Released in</label>
+                &nbsp;&nbsp;<input type="text" placeholder="Year " [(ngModel)]="year">
+                <br>
+                <br>
+                <button *ngIf="validate()"
+                    style="width: auto; height: 50px; margin-top: 10px; overflow-wrap: break-word; background-color: #E8EE37; border: none; font-size: 15px;   font-family: 'Lucida Calligraphy'; border-radius: 25px;"
+                    (click)="sendtodb()">Submit Request {{innerwidth}}</button>
+                <br>
+                <br>
+            </div>
+        </div>
     </div>
+
+    <div class="column left" style="background-color:#bbb;">
+        <div *ngFor="let data of array">
+            <br>
+            <button style="width: auto; max-width: 180px; height: auto; border-radius: 25px; background-color: aliceblue; border: none;"> &nbsp;&nbsp;&nbsp;&nbsp;{{data}}&nbsp;&nbsp;&nbsp;&nbsp; </button>
+            <br>
+        </div>
     </div>
+</div>

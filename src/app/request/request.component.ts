@@ -8,10 +8,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class RequestComponent implements OnInit {
 movie:string;
 year:string;
+result:string;
 msg:string;
+array=["hello","hai","watch it at 2:03","funny bro"];
+innerwidth: number;
  constructor(private db:AngularFirestore) {  }
 
   ngOnInit() {
+    this.innerwidth=window.innerWidth;
   }
 
   sendtodb(){

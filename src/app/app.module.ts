@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NgxSpinnerModule } from "ngx-spinner";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { HttpClientModule } from '@angular/common/http';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -18,6 +18,8 @@ import { PlaymovieComponent } from './playmovie/playmovie.component';
 import { AddnewComponent } from './addnew/addnew.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material';
+import { TrailerComponent } from './trailer/trailer.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBjnRzcNAQXkXO-IkxFeYaY_aglGuB0cxI",
@@ -39,21 +41,23 @@ var firebaseConfig = {
     RequestComponent,
     PlaymovieComponent,
     AddnewComponent,
+    TrailerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatDividerModule,
+    NgxSpinnerModule,
     MatCardModule,
     MatFormFieldModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    MatDialogModule,
     AngularFirestoreModule,
     MatAutocompleteModule,
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
     FormsModule,
-    NgxSpinnerModule,
     HttpClientModule,
     BrowserAnimationsModule,
   ],

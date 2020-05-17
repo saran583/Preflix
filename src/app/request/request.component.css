@@ -16,3 +16,36 @@ input[type=text] {
     font-family: arial;
     background-color: cornsilk;
   }  
+
+  .md-dialog-container {
+    background-color: #000;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Create two equal columns that floats next to each other */
+  .column {
+    float: left;
+    height: 300px; /* Should be removed. Only for demonstration */
+  }
+
+  .right {
+    width: 80%;
+    padding: 10px;
+  }
+
+  .left {
+    width: 20%;
+    padding: 10px;
+
+  }
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  

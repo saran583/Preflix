@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from "ngx-spinner";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router, ActivatedRoute} from '@angular/router';
 import { RequestComponent } from '../request/request.component';
 import { FormsModule, FormControl, Validators } from '@angular/forms';
+import { NgxSpinnerService } from "ngx-spinner";
 import { MatInputModule } from '@angular/material';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { PlaymovieComponent } from '../playmovie/playmovie.component';
-
+import { TrailerComponent } from '../trailer/trailer.component';
+import { MatDialog, ThemePalette } from '@angular/material';
 
 @Component({
   selector: 'app-home',
@@ -29,12 +30,16 @@ export class HomeComponent implements OnInit {
   qedar= [];
   focusing: boolean;
 
-  constructor(private db:AngularFirestore,private spinner: NgxSpinnerService,private activatedroute:ActivatedRoute,private router:Router) { }
+  constructor(private db:AngularFirestore,private activatedroute:ActivatedRoute,private spinner:NgxSpinnerService, private router:Router, public dialog: MatDialog) { }
 
   ngOnInit() {
+    
     this.ReadData();
+    
     this.spinner.show();
- 
+    
+    
+    
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
@@ -43,6 +48,7 @@ export class HomeComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
+    
   }
 
   private _filter(value: string): string[] {
@@ -66,11 +72,39 @@ navigate(counter:number){
   console.log("sequence",counter);
   PlaymovieComponent.moviename=this.value[counter]["MovieName"];
   PlaymovieComponent.year=this.value[counter]["Year"];
-  PlaymovieComponent.watchingmovie=false;
   PlaymovieComponent.trailerlink=this.value[counter]["Trailer"];
-  PlaymovieComponent.movielink="https://drive.google.com/file/d/1oGEd5U0gC6ds0EdLAJTQ6H8d2oAj2oAL/preview";
-  //this.value[counter]["Link"];
+  PlaymovieComponent.movielink=this.value[counter]["Link"];
+  PlaymovieComponent.language=this.value[counter]["Language"];
+  PlaymovieComponent.runtime=this.value[counter]["Runtime"];
+  PlaymovieComponent.actors=this.value[counter]["Actors"];
+  PlaymovieComponent.plot=this.value[counter]["Plot"];
+  //"https://drive.google.com/file/d/1oGEd5U0gC6ds0EdLAJTQ6H8d2oAj2oAL/preview";
   this.router.navigate(["/playmovie"]);
+}
+
+checkingloop(){
+for(let k=0;k<this.value.length;k++){
+  
+  if(this.value[k]["Genre"].toLowerCase().indexOf("comedy")>=0){
+    console.log(this.value[k]["Genre"]);
+  }
+}
+}
+
+navigatetopopup(counter:number){
+  console.log("sequence",counter);
+  TrailerComponent.moviename=this.value[counter]["MovieName"];
+  TrailerComponent.year=this.value[counter]["Year"];
+  TrailerComponent.trailerlink=this.value[counter]["Trailer"];
+  TrailerComponent.movielink=this.value[counter]["Link"];
+  TrailerComponent.language=this.value[counter]["Language"];
+  TrailerComponent.runtime=this.value[counter]["Runtime"];
+  TrailerComponent.actors=this.value[counter]["Actors"];
+  TrailerComponent.plot=this.value[counter]["Plot"];
+  //"https://drive.google.com/file/d/1oGEd5U0gC6ds0EdLAJTQ6H8d2oAj2oAL/preview";
+  this.dialog.open(TrailerComponent,{
+    panelClass: 'my-class'
+  }); 
 }
 
 async ReadData(){
@@ -80,6 +114,7 @@ async ReadData(){
    this.value=val;
    console.log(this.value[0]["MovieName"])
    this.generateusernames();
+   this.checkingloop();
  });
    }
  
@@ -96,8 +131,5 @@ async ReadData(){
     this.qedar[i]=this.value[i]["MovieName"];
   }    
 }
-
-
-
 
 }

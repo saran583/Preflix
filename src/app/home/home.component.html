@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 &nbsp;&nbsp;
 <div>
     <mat-form-field class="matwrapper">
@@ -11,27 +12,79 @@
     </mat-form-field>
 </div>
 
-<div id="makeGird" *ngIf="!focusing">
+<div style="background-color: #181818;" id="makeGird" *ngIf="!focusing">
     <div class="card" *ngFor="let item of arrayOne()">
-        <img style="border-radius: 10px; margin-top: 5px;margin-left: 5px; margin-right: 5px; width: 95%; height: 280px; "
-            [src]="value[item]['Poster']" (click)="navigate(item)" alt="Poster not available">
+        <div class="container">
+            <img style="border-radius: 10px; margin-top: 7px;margin-left: 5px; margin-right: 5px; width: 95%; height: 290px; "
+                [src]="value[item]['Poster']" class="image" alt="Poster not available">
+            <div class="middle">
+                <div>
+                    <p
+                        style="color: aliceblue; margin-bottom: 25px; max-width: 220px; overflow-wrap: break-word; height: auto;">
+                        Genre: {{value[item]["Genre"]}}</p>
+                    <table>
+                        <tr>
+                            <td>
+                                <button class="btn" (click)="navigatetopopup(item)"><i class="fa fa-film"><br>Watch
+                                        trailer</i></button>
+                            </td>
+                            <td>
+                                <button class="btn" (click)="navigate(item)"><i class="fa fa-play"><br>Play
+                                        Movie</i></button>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <p align="center" style="color:aliceblue;">Rating:{{value[item]["Ratings"]}}/10</p>
+                    <br>
+                    <p align="center" style="color:aliceblue;">Runtime:{{value[item]["Runtime"]}}</p>
+                </div>
+            </div>
+        </div>
         <p style="color: red;" align="center">
-            {{value[item]["MovieName"]}}-{{value[item]["Year"]}}
+            {{value[item]["MovieName"]}}-{{value[item]["Year"]}} ({{value[item]["Language"]}})
         </p>
     </div>
 </div>
 
 <div *ngIf="focusing">
-    <div  *ngFor="let item of arrayOne()">
+    <div *ngFor="let item of arrayOne()">
         <div class="card" *ngIf="value[item]['MovieName'] == checking">
-            <img style="border-radius: 10px; margin-top: 5px;margin-left: 5px; margin-right: 5px; width: 95%; height: 280px; "
-                [src]="value[item]['Poster']" (click)="navigate()" alt="Poster not available">
+            <div class="container">
+                <img style="border-radius: 10px; margin-top: 5px;margin-left: 5px; margin-right: 5px; width: 95%; height: 280px; "
+                    [src]="value[item]['Poster']" class="image" (click)="navigate(item)" alt="Poster not available">
+                <div class="middle">
+                    <div>
+                        <p
+                            style="color: aliceblue; margin-bottom: 25px; max-width: 220px; overflow-wrap: break-word; height: auto;">
+                            Genre: {{value[item]["Genre"]}}</p>
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <button class="btn" (click)="navigatetopopup(item)"><i class="fa fa-film"><br>Watch
+                                            trailer</i></button>
+                                </td>
+                                <td>
+                                    <button class="btn" (click)="navigate(item)"><i class="fa fa-play"><br>Play
+                                            Movie</i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                        <p align="center" style="color:aliceblue;">Rating:{{value[item]["Ratings"]}}/10</p>
+                        <br>
+                        <p align="center" style="color:aliceblue;">Runtime:{{value[item]["Runtime"]}}</p>
+                    </div>
+                </div>
+            </div>
             <p style="color: red;" align="center">
-                {{value[item]["MovieName"]}}-{{value[item]["Year"]}}
+                {{value[item]["MovieName"]}}-{{value[item]["Year"]}} ({{value[item]["Language"]}})
             </p>
         </div>
     </div>
 </div>
+
 <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
-    <p style="color: white"> Connecting to Preflix Server... </p>
+    <p style="color: white"> Connecting to Preflex Server... </p>
 </ngx-spinner>

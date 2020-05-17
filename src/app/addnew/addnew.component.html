@@ -1,6 +1,7 @@
 <br>
-<p align="center" style="color: bisque;">{{result}}</p>
+
 <div align="center">
+<p align="center" style="color: bisque;">{{result}}</p>
 <div class="card">
 <br>
 <br>
@@ -10,6 +11,10 @@
 <br>
 <label >Released in</label>
 &nbsp;&nbsp;<input type="text" placeholder="Year " [(ngModel)] = "year">
+<br>
+<br>
+<label >Language</label>
+&nbsp;&nbsp;<input type="text" placeholder="Language " [(ngModel)] = "language">
 <br>
 <br>
 <label >Drive Link</label>
@@ -34,7 +39,7 @@
 <div *ngFor = "let name of names"> 
 <h1 style="color: bisque;"> {{name.Title}}-{{name.Year}} </h1> 
 <br > 
-<img src = {{name.Poster}} (click)="poster=name.Poster" alt = "image not found in the DB" > 
+<img src = {{name.Poster}} (click)="capture(name)" alt = "image not found in the DB" > 
 <br > 
 <p style="color: bisque;">{{name.Genre}} </p>
 <br> 
