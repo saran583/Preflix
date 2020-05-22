@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material';
 import { TrailerComponent } from './trailer/trailer.component';
+import { SuggestionsComponent } from './suggestions/suggestions.component';
+import { PartyComponent } from './party/party.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyBjnRzcNAQXkXO-IkxFeYaY_aglGuB0cxI",
@@ -42,6 +44,8 @@ var firebaseConfig = {
     PlaymovieComponent,
     AddnewComponent,
     TrailerComponent,
+    SuggestionsComponent,
+    PartyComponent,
   ],
   imports: [
     BrowserModule,

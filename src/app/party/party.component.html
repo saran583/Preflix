@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="root">
+    <div id="left" style="background-color:#aaa;">
+            <iframe [src]="urlSafe" width="100%" height="100%"></iframe>;
+    </div>
+
+    <div id="right" style="background-color:#bbb;">
+        <div *ngFor="let data of count">
+            <br>
+            <button [ngClass]="align(array['id'][data])"> <div align="left" style="color: blue;">{{array["id"][data]}}</div> &nbsp;&nbsp;&nbsp;&nbsp;{{array["msg"][data]}}&nbsp;&nbsp;&nbsp;&nbsp; </button>
+            <br>
+        </div>
+        <div id="footer">
+            <table>
+                <tr>
+                    <td>
+                        <input  type="text" style="width: 200px;" placeholder="Type your Message" [(ngModel)]="chat">
+                    </td>
+                    <td>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <button style="width: 30px; border-radius: 20px; background-color: blue;  border-color: lightblue; height: 30px;" (click)="send()"><i class="fa fa-send"></i></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

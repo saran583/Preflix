@@ -9,8 +9,7 @@ export class RequestComponent implements OnInit {
 movie:string;
 year:string;
 result:string;
-msg:string;
-array=["hello","hai","watch it at 2:03","funny bro"];
+msg:any;
 innerwidth: number;
  constructor(private db:AngularFirestore) {  }
 

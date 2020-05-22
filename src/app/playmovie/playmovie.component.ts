@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router, ActivatedRoute} from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { PartyComponent } from '../party/party.component';
 
 @Component({
   selector: 'app-playmovie',
@@ -20,7 +23,7 @@ export class PlaymovieComponent implements OnInit {
   static actors: string;
   static plot: string;
   
-  constructor(public sanitizer: DomSanitizer,private spinner:NgxSpinnerService) {  }
+  constructor(public sanitizer: DomSanitizer, private db: AngularFirestore,private spinner:NgxSpinnerService,private router:Router) {  }
  
    ngOnInit() {
      this.control();
@@ -56,6 +59,19 @@ Actors(){
 
 Plot(){
   return PlaymovieComponent.plot;
+}
+navigate(){
+  var tm = Date.now().toString();
+  this.db.collection("party").doc(tm).set({
+    "messages":{
+      id:["Preflix"],
+      msg:["Welcome to Preflix Watch Party"]
+
+    },
+  })
+
+
+  this.router.navigate(["/party", tm, PlaymovieComponent.movielink ]);
 }
 
 }

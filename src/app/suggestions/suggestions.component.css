@@ -1,0 +1,9 @@
+.card {
+    margin-top: 5%;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(247, 242, 242, 0.2);
+    max-width: 400px;
+    text-align: center;
+    font-family: arial;
+    background-color: cornsilk;
+  }  
