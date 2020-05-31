@@ -60,18 +60,17 @@ Actors(){
 Plot(){
   return PlaymovieComponent.plot;
 }
+
 navigate(){
   var tm = Date.now().toString();
   this.db.collection("party").doc(tm).set({
     "messages":{
-      id:["Preflix"],
-      msg:["Welcome to Preflix Watch Party"]
+      movie:PlaymovieComponent.movielink,
+      msg:["Preflix-Welcome to Preflix Watch Party"]
 
     },
   })
-
-
-  this.router.navigate(["/party", tm, PlaymovieComponent.movielink ]);
+  this.router.navigate(["/party",tm ]);
 }
 
 }

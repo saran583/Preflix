@@ -1,24 +1,36 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div id="root">
-    <div id="left" style="background-color:#aaa;">
+<div align="center" *ngIf="startparty==0">
+<br>
+<br>
+<br>
+<br>
+<input type="text" style="width: 200px;" placeholder="Enter your Name" [(ngModel)]="idname">
+<button style="width: 80px; height:40px; border-radius: 25px; color: blueviolet;" (click)="start()">Start party</button>
+</div>
+
+<div *ngIf="startparty==1" id="root">
+    <div id="left" style="background-color:#363636;">
             <iframe [src]="urlSafe" width="100%" height="100%"></iframe>;
     </div>
-
-    <div id="right" style="background-color:#bbb;">
-        <div *ngFor="let data of count">
+    <div id="right" #scrollMe [scrollTop]="scrollMe.scrollHeight" style="background-color:#363636; overflow-y: scroll; ">
+        <div style="margin-bottom: 80px; overflow: hidden;">
+        <div *ngFor="let data of counter()">
             <br>
-            <button [ngClass]="align(array['id'][data])"> <div align="left" style="color: blue;">{{array["id"][data]}}</div> &nbsp;&nbsp;&nbsp;&nbsp;{{array["msg"][data]}}&nbsp;&nbsp;&nbsp;&nbsp; </button>
-            <br>
+            <button [ngClass]="align(id[data])"> <div align="left" style="color: blue;">{{id[data]}}</div> &nbsp;&nbsp;&nbsp;&nbsp;{{msgs[data]}}&nbsp;&nbsp;&nbsp;&nbsp; </button>
+            <div  *ngFor="let item of arrayOne(msgs[data]); let i = index;">
+                <br>
+            </div>
+        </div>
         </div>
         <div id="footer">
             <table>
                 <tr>
                     <td>
-                        <input  type="text" style="width: 200px;" placeholder="Type your Message" [(ngModel)]="chat">
+                        <input align="center" type="text" style="width: 250px;" placeholder="Type your Message" [(ngModel)]="chat" (keyup.enter)="send()">
                     </td>
-                    <td>
+                    <!-- <td>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <button style="width: 30px; border-radius: 20px; background-color: blue;  border-color: lightblue; height: 30px;" (click)="send()"><i class="fa fa-send"></i></button>
-                    </td>
+                    </td> -->
                 </tr>
             </table>
         </div>

@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:"addnew", component:AddnewComponent},
   {path:"playmovie", component:PlaymovieComponent},
   {path:"trailer", component:TrailerComponent},
-  {path:"party/:movie/:invite", component:PartyComponent}
+  {path:"party/:invite", component:PartyComponent}
 ];
 
 @NgModule({
